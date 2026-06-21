@@ -67,6 +67,11 @@ npm-debug.log*
 *.log
 logs/
 
+# Pythagora (AI code generation tool) — never belongs in this repo
+pythagora-core/
+database/pythagora.db
+*.db
+
 # Source documents — raw .docx and .pdf files are not committed
 # Extracted content lives in lab READMEs
 *.docx
