@@ -1,0 +1,78 @@
+# Security — never commit these
+*.env
+*.key
+*.pem
+*.pfx
+*.p12
+*.crt
+secrets/
+credentials/
+passwords.txt
+creds.txt
+
+# Wazuh sensitive configs
+ossec.conf.bak
+agent.conf.bak
+*_password*
+*_secret*
+
+# VirtualBox
+*.vdi
+*.vbox
+*.vbox-prev
+*.vmdk
+*.vhd
+*.ova
+*.ovf
+Logs/
+
+# Large capture files — store externally or use Git LFS
+*.pcap
+*.pcapng
+*.cap
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+.nfs*
+
+# Editor artifacts
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# Python (for any scripts)
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.env
+
+# Node (if any automation)
+node_modules/
+npm-debug.log*
+
+# Logs
+*.log
+logs/
+
+# Source documents — raw .docx and .pdf files are not committed
+# Extracted content lives in lab READMEs
+*.docx
+*.pdf
+
+# Screenshots — exclude originals if too large (keep optimized)
+# Uncomment if needed:
+# screenshots/*.png
+# screenshots/*.jpg

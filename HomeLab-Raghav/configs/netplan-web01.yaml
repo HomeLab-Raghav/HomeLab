@@ -1,0 +1,22 @@
+# HomeLab Corp — WEB01 Static IP Configuration
+# Deploy to: /etc/netplan/01-network-manager-all.yaml on WEB01
+# After changes: sudo netplan apply
+# Verify: ip addr show enp0s8
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp0s3:
+      # Adapter 1 — NAT — internet access for apt/npm
+      dhcp4: true
+
+    enp0s8:
+      # Adapter 2 — Host-Only vboxnet0 — HomeLab Corp internal network
+      dhcp4: no
+      addresses:
+        - 192.168.56.101/24
+      nameservers:
+        # Point to DC01 for homecorp.local DNS resolution
+        addresses: [192.168.56.10, 8.8.8.8]
+        search: [homecorp.local]

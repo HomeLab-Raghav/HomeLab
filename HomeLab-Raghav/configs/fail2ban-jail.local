@@ -1,0 +1,53 @@
+# HomeLab Corp — fail2ban jail.local
+# Deploy to: /etc/fail2ban/jail.local on WEB01
+# After changes: sudo systemctl restart fail2ban
+# Verify: sudo fail2ban-client status sshd
+
+[DEFAULT]
+# Ban duration (seconds) — 1 hour
+bantime  = 3600
+
+# Window of time to count failures (seconds) — 10 minutes
+findtime = 600
+
+# Number of failures before ban
+maxretry = 5
+
+# Ignore HomeLab management IP (host machine)
+ignoreip = 127.0.0.1/8 ::1 192.168.56.1
+
+# Use iptables for banning
+banaction = iptables-multiport
+
+# ── SSH ──────────────────────────────────────────────────────────────────────
+[sshd]
+enabled  = true
+port     = ssh
+filter   = sshd
+logpath  = /var/log/auth.log
+maxretry = 5
+bantime  = 3600
+
+# ── Apache — HTTP auth failures ──────────────────────────────────────────────
+[apache-auth]
+enabled  = true
+port     = http,https
+filter   = apache-auth
+logpath  = /var/log/apache2/error.log
+maxretry = 5
+
+# ── Apache — directory traversal and scanner detection ───────────────────────
+[apache-badbots]
+enabled  = true
+port     = http,https
+filter   = apache-badbots
+logpath  = /var/log/apache2/access.log
+maxretry = 2
+bantime  = 86400
+
+[apache-noscript]
+enabled  = true
+port     = http,https
+filter   = apache-noscript
+logpath  = /var/log/apache2/access.log
+maxretry = 6
