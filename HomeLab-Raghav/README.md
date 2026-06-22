@@ -10,7 +10,7 @@ A fully documented, enterprise-grade cybersecurity home lab built on VirtualBox.
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│                     H O M E C O R P . L O C A L                 │
+│                     H O M E C O R P . L O C A L                  │ 
 │                       NETWORK: 192.168.56.0/24                   │
 │                                                                  │
 │  ┌──────────────────┐         ┌──────────────────────────────┐   │
